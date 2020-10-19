@@ -1,0 +1,1 @@
+{"ast":null,"code":"var __jsx = React.createElement;\nimport React from \"react\";\nimport \"./HeaderFooter.css\";\n\nconst HeaderFooter = props => {\n  return __jsx(\"div\", {\n    className: \"footer_header\"\n  }, __jsx(\"h3\", null, props.headerText));\n};\n\nexport default HeaderFooter;","map":null,"metadata":{},"sourceType":"module"}

@@ -1,0 +1,30 @@
+.button_container > button {
+  background-color: #000000;
+  height: 4.4rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 1.5rem;
+  padding: 0;
+  border: none;
+}
+.button_container > button:visited {
+  border: none;
+}
+.button_container > button:active {
+  border: none;
+}
+
+.button_container > button {
+  width: 20rem;
+  position: relative;
+  transition: 800ms ease all;
+  margin-right: 1rem;
+  margin-left: 1rem;
+}
+.button_container > button:hover {
+  font-weight: 600;
+}

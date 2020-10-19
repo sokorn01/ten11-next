@@ -1,0 +1,18 @@
+.sale__intro{
+    display: flex;
+    height: 6rem;
+    justify-content: center;
+    align-items: center;
+    background-color: #f2f2f2;
+    margin-bottom: 2rem;
+}
+.sale__intro > span {
+    font-size: 1.4rem;
+}
+#sale_text, #sale_line {
+    color: #ff1493;
+    font-weight: 700;
+}
+#sale_line {
+    padding: 0rem 0.5rem;
+}

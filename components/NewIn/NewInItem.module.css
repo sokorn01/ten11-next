@@ -1,0 +1,22 @@
+
+.new_in_item > .new_image {
+    width: 100%;
+    overflow: hidden;
+  }
+  .new_in_item {
+    transition: transform .5s ease;
+    cursor: pointer;
+  }
+  .new_in_item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0px 4px 0 rgba(192,192,192, 0.5), 0 5px 16px 0 rgba(192,192,192, 0.5);
+  }
+  .new_item_label {
+    width: 100%;
+    padding: 2rem 0rem;
+  }
+  .new_item_label > span {
+    font-size: 1.4rem;
+    padding-left: 1rem;
+  }
+  
