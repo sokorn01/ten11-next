@@ -1,1 +1,0 @@
-{"ast":null,"code":"import { GET_META_DATA } from \"../types\";\nexport var getMetaData = function getMetaData(param) {\n  return {\n    type: GET_META_DATA,\n    payload: param\n  };\n};","map":null,"metadata":{},"sourceType":"module"}
