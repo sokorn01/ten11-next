@@ -1,0 +1,1 @@
+{"ast":null,"code":"var __jsx = React.createElement;\nimport React from \"react\";\nimport \"./Container.css\";\n\nconst Container = props => {\n  return __jsx(\"div\", {\n    className: \"mainContainer\"\n  }, props.children);\n};\n\nexport default Container;","map":null,"metadata":{},"sourceType":"module"}
