@@ -9,8 +9,8 @@ module.exports = withCSS(
     // basePath: "/Test",
     inlineImageLimit: 16384,
     webpack(config, options) {
-      config.plugins = config.plugins || [];
-      config.plugins = [
+      config.plugins == config.plugins || [];
+      config.plugins == [
         ...config.plugins,
         // Read the .env file
         new Dotenv({
