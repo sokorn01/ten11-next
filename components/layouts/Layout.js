@@ -7,7 +7,6 @@ import useSticky from "../../shared/hooks/useSticky";
 
 const Layout = (props) => {
   const { isSticky, element, hideNav, } = useSticky();
-
   return (
     <React.Fragment>
       <Head>

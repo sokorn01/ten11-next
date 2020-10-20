@@ -64,7 +64,6 @@ const Home = (props) => {
 };
 
 export const getStaticProps = async () => {
-  console.log(process.env.REACT_APP_API_URL_IMAGE);
   const api = serviceApiFormData();
   const res = await api.post("MenuApp/getMenu");
   const menu = res.data;

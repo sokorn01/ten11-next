@@ -75,7 +75,7 @@ const ProductList = (props) => {
   // }
   return (
     <React.Fragment>
-      <Layout>
+      <Layout pathImage={props.pathImageTen11}>
         <Container>
           <div className="row">
             <ListSideBarMenu
@@ -97,7 +97,11 @@ const ProductList = (props) => {
                 pullDownToRefreshThreshold={50}
               >
                 {listProduct.map((item, index) => (
-                  <ProductItem key={index} {...item} />
+                  <ProductItem
+                    key={index}
+                    {...item}
+                    pathImage={props.pathImage}
+                  />
                 ))}
               </InfiniteScroll>
             </div>
@@ -125,6 +129,8 @@ export const getServerSideProps = async (context) => {
     return {
       props: {
         product,
+        pathImage: process.env.REACT_APP_API_URL_IMAGE_LIST,
+        pathImageTen11: process.env.REACT_APP_API_URL_IMAGE,
       },
     };
   } catch {

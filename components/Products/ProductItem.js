@@ -23,9 +23,7 @@ const ProductItem = (props) => {
             <div className="product-thumbnail">
               <img
                 alt={props.pname}
-                src={`${
-                  process.env.REACT_APP_API_URL_IMAGE_LIST + props.image
-                }`}
+                src={`${props.pathImage + props.image}`}
                 className="img-style"
               />
             </div>
