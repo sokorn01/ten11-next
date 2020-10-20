@@ -61,7 +61,7 @@ const HeaderSide = (props) => {
                 <Link href="/">
                   <a>
                     <img
-                      src={`${process.env.REACT_APP_API_URL_IMAGE}logo/logo512.png`}
+                      src={`${props.pathImage}logo/logo512.png`}
                       className="logo-style"
                     />
                   </a>

@@ -31,6 +31,7 @@ const images = [
 ];
 
 const Home = (props) => {
+  console.log(props);
   const globalState = useSelector((state) => state.metadata.d);
   const dispatch = useDispatch();
   console.log(props);
@@ -51,29 +52,29 @@ const Home = (props) => {
     return <div>Loading...</div>;
   }
   return (
-    <Layout menu={props.menu.menu}>
+    <Layout menu={props.menu.menu} pathImage={props.pathImage}>
       <div>{globalState}</div>
       <SaleIntroduction />
       {/* <SwipperSlider images={images} /> */}
       <ShopIntroduction />
-      <Collection />
-      <NewIn />
+      <Collection pathImage={props.pathImage} />
+      <NewIn pathImage={props.pathImage} />
     </Layout>
   );
 };
 
 export const getStaticProps = async () => {
+  console.log(process.env.REACT_APP_API_URL_IMAGE);
   const api = serviceApiFormData();
   const res = await api.post("MenuApp/getMenu");
   const menu = res.data;
   return {
     props: {
       menu,
+      pathImage: process.env.REACT_APP_API_URL_IMAGE,
     },
   };
 };
-
-
 
 const mapDispatchToProps = (dispatch) => {
   return {

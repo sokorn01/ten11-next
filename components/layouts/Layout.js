@@ -6,7 +6,7 @@ import Footer from "../Footers/Footer";
 import useSticky from "../../shared/hooks/useSticky";
 
 const Layout = (props) => {
-  const { isSticky, element, hideNav } = useSticky();
+  const { isSticky, element, hideNav, } = useSticky();
 
   return (
     <React.Fragment>
@@ -54,6 +54,7 @@ const Layout = (props) => {
         element={element}
         hideNav={hideNav}
         allMenu={props.menu}
+        pathImage={props.pathImage}
       />
       {props.children}
       <Footer />

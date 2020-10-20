@@ -4,7 +4,7 @@ import Container from "../Containers/Container";
 import CollectionItem from "./CollectionItem";
 import sal from "sal.js";
 
-const Collection = () => {
+const Collection = (props) => {
   useEffect(() => {
     sal();
   }, []);
@@ -19,7 +19,7 @@ const Collection = () => {
         >
           <CollectionItem
             collectionName="Men's collection"
-            image={`${process.env.REACT_APP_API_URL_IMAGE}full-size-1080px/VC_Z3132.jpg`}
+            image={`${props.pathImage}full-size-1080px/VC_Z3132.jpg`}
           />
         </div>
         <div
@@ -30,7 +30,7 @@ const Collection = () => {
         >
           <CollectionItem
             collectionName="Women's collection"
-            image={`${process.env.REACT_APP_API_URL_IMAGE}full-size-1080px/VC_Z2977.jpg`}
+            image={`${props.pathImage}full-size-1080px/VC_Z2977.jpg`}
           />
         </div>
       </div>

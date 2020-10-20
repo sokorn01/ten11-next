@@ -7,23 +7,23 @@ import sal from "sal.js";
 const images = [
   {
     id: 1,
-    imagUrl: `${process.env.REACT_APP_API_URL_IMAGE}list-720px/VC_Z2672.jpg`,
+    imagUrl: `list-720px/VC_Z2672.jpg`,
   },
   {
     id: 2,
-    imagUrl: `${process.env.REACT_APP_API_URL_IMAGE}list-720px/VC_Z2824.jpg`,
+    imagUrl: `list-720px/VC_Z2824.jpg`,
   },
   {
     id: 3,
-    imagUrl: `${process.env.REACT_APP_API_URL_IMAGE}list-720px/VC_Z3196.jpg`,
+    imagUrl: `list-720px/VC_Z3196.jpg`,
   },
   {
     id: 4,
-    imagUrl: `${process.env.REACT_APP_API_URL_IMAGE}list-720px/VC_Z3504.jpg`,
+    imagUrl: `list-720px/VC_Z3504.jpg`,
   },
 ];
 
-const NewIn = () => {
+const NewIn = (props) => {
   useEffect(() => {
     sal();
   }, []);
@@ -45,7 +45,7 @@ const NewIn = () => {
               data-sal-delay={`${200 * (index + 1)}`}
               data-sal-easing="ease-out-bounce"
             >
-              <NewInItem {...item} />
+              <NewInItem {...item} pathImage={props.pathImage}/>
             </div>
           ))}
         </div>
