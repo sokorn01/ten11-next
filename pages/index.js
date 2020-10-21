@@ -31,10 +31,8 @@ const images = [
 ];
 
 const Home = (props) => {
-  console.log(props);
   const globalState = useSelector((state) => state.metadata.d);
   const dispatch = useDispatch();
-  console.log(props);
   const router = useRouter();
 
   useEffect(() => {
@@ -57,8 +55,8 @@ const Home = (props) => {
       <SaleIntroduction />
       {/* <SwipperSlider images={images} /> */}
       <ShopIntroduction />
-      <Collection pathImage={props.pathImage} />
-      <NewIn pathImage={props.pathImage} />
+      <Collection pathImage={props.pathImage}/>
+      <NewIn pathImage={props.pathImage}/>
     </Layout>
   );
 };
@@ -74,6 +72,8 @@ export const getStaticProps = async () => {
     },
   };
 };
+
+
 
 const mapDispatchToProps = (dispatch) => {
   return {

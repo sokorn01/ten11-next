@@ -1,25 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { wrapper, State } from "../../store/store";
+import { wrapper, State } from "../store/store";
 import { useRouter } from "next/router";
 import cookieCutter from "cookie-cutter";
-import "../productList.css";
+import "./productList.css";
 import Cookies from "cookies";
-import Layout from "../../components/layouts/Layout";
-import Container from "../../components/Containers/Container";
+import Layout from "../components/layouts/Layout";
+import Container from "../components/Containers/Container";
 import "antd/dist/antd.css";
-import ProductItem from "../../components/Products/ProductItem";
-import useSticky from "../../shared/hooks/useSticky";
-import ProductListLoading from "../../components/Loading/ProductListLoading";
-import ListSideBarMenu from "../../components/Products/ListSideBarMenu";
+import ProductItem from "../components/Products/ProductItem";
+import useSticky from "../shared/hooks/useSticky";
+import ProductListLoading from "../components/Loading/ProductListLoading";
+import ListSideBarMenu from "../components/Products/ListSideBarMenu";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { FiRefreshCw } from "react-icons/fi";
-import { serviceApiFormData } from "../../shared/hooks/seviceApi";
+import { serviceApiFormData } from "../shared/hooks/seviceApi";
 
 const ProductList = (props) => {
-  console.log(props.product);
   const router = useRouter();
-  // const { page, id, slug } = router.query;
   const page = router.query.page || 1;
   const { hideNav } = useSticky;
   const [hasMore, setHasMore] = useState(true);
@@ -28,11 +26,15 @@ const ProductList = (props) => {
   useEffect(() => {
     if (props.product !== undefined && props.product.list !== undefined) {
       setHasMore(true);
-      if (Number(page) === 1) {
+      if (Number(page) === 1 && props.product.list.length > 0) {
         setListProduct(props.product.list);
         localStorage.setItem("totalproduct", props.product.total_record);
       } else if (Number(page) > 1) {
         setListProduct([...listProduct, ...props.product.list]);
+      } else if (props.product.list.length === 0) {
+        setHasMore(false);
+        setListProduct([]);
+        localStorage.setItem("totalproduct", 0);
       }
     }
   }, [props.product]);
@@ -47,11 +49,7 @@ const ProductList = (props) => {
     if (listProduct.length > 0)
       if (listProduct.length < Number(totalProduct)) {
         setHasMore(true);
-        router.push({
-          pathname: `/product/${category_seo}`,
-          query: { page: `${Number(page) + 1}` },
-          as: `/product/${category_seo}`,
-        });
+        router.push(`/${category_seo}?page=${Number(page) + 1}`);
       } else {
         setHasMore(false);
       }
@@ -75,7 +73,7 @@ const ProductList = (props) => {
   // }
   return (
     <React.Fragment>
-      <Layout pathImage={props.pathImageTen11}>
+      <Layout menu={props.menu.menu} pathImage={props.pathImageTen11}>
         <Container>
           <div className="row">
             <ListSideBarMenu
@@ -114,20 +112,21 @@ const ProductList = (props) => {
 
 export const getServerSideProps = async (context) => {
   const page = context.query.page || "1";
+  const seo_url = context.params.slug[0];
   try {
     const api = serviceApiFormData();
-    const cookies = new Cookies(context.req, context.res);
-    const category_seo = cookies.get("category_seo");
-
+    const res = await api.post("MenuApp/getMenu");
+    const menu = res.data;
     const data = {
       page: page,
-      seo_url: category_seo,
+      seo_url: seo_url,
     };
-    console.log(data);
     const productList = await api.post("ListProductWeb/getProductList", data);
     const product = productList.data;
+
     return {
       props: {
+        menu,
         product,
         pathImage: process.env.REACT_APP_API_URL_IMAGE_LIST,
         pathImageTen11: process.env.REACT_APP_API_URL_IMAGE,

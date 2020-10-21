@@ -80,12 +80,12 @@ const HeaderSide = (props) => {
                           <li key={index}>
                             <Link
                               href={{
-                                pathname: "product/[...slug]",
+                                pathname: "/[...slug]",
                                 query: {
                                   page: "1",
                                 },
                               }}
-                              as={`product/${menu.category_seo_url}`}
+                              as={`/${menu.category_seo_url}`}
                             >
                               <a onClick={() => productListHanlder(menu)}>
                                 <span>{menu.name}</span>
@@ -105,14 +105,12 @@ const HeaderSide = (props) => {
                                             <li key={index}>
                                               <Link
                                                 href={{
-                                                  pathname:
-                                                    "/product/[...mainCategory]/[...slug]",
+                                                  pathname: "/[...slug]",
                                                   query: {
-                                                    id: `${menu2.category_id}`,
                                                     page: "1",
                                                   },
                                                 }}
-                                                as={`/product/${menu2.name}/?id=${menu2.category_id}&&page=1`}
+                                                as={`${menu2.category_seo_url}`}
                                               >
                                                 <a
                                                   onClick={() =>
@@ -154,16 +152,10 @@ const HeaderSide = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    allMenu: state.menu.menuData,
-  };
-};
-
 const mapDispatchToProps = (dispatch) => {
   return {
     getMetaData: (param) => dispatch(getMetaData(param)),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HeaderSide);
+export default connect(null, mapDispatchToProps)(HeaderSide);

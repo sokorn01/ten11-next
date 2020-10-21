@@ -38,7 +38,6 @@ export const fetchLogin = (param) => {
             dispatch(fetchLoginFailure("Please contact adminitrator !"));
           }
         } else {
-          console.log("Error", error.message);
           dispatch(fetchLoginFailure(error.message));
         }
       });

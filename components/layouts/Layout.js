@@ -4,9 +4,24 @@ import Head from "next/head";
 import Header from "../Headers/HeaderSide";
 import Footer from "../Footers/Footer";
 import useSticky from "../../shared/hooks/useSticky";
+import NProgress from "nprogress";
+import Router from "next/router";
+
+NProgress.configure({
+  showSpinner: false,
+  easing: "ease",
+  speed: 500,
+  trickle: false,
+});
+
+Router.onRouteChangeStart = (url) => {
+  NProgress.start();
+};
+Router.onRouteChangeComplete = () => NProgress.done();
+Router.onRouteChangeError = () => NProgress.done();
 
 const Layout = (props) => {
-  const { isSticky, element, hideNav, } = useSticky();
+  const { isSticky, element, hideNav } = useSticky();
   return (
     <React.Fragment>
       <Head>
@@ -47,6 +62,12 @@ const Layout = (props) => {
           />
         )}
         <link rel="icon" type="image/ico" href="/static/favicon.ico" />
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css"
+          integrity="sha512-42kB9yDlYiCEfx2xVwq0q7hT4uf26FUgSIZBK8uiaEnTdShXjwr8Ip1V4xGJMg3mHkUt9nNuTDxunHF0/EgxLQ=="
+          crossorigin="anonymous"
+        />
       </Head>
       <Header
         isSticky={isSticky}

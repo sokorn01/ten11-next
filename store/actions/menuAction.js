@@ -15,8 +15,6 @@ export const fetchMenu = () => {
     service
       .post("MenuApp/getMenu")
       .then((response) => {
-        console.log(response)
-        console.log(dispatch)
         dispatch({ type: FETCH_MENU_SUCCESS, payload: response.data.menu });
         // dispatch(fetchMenuSuccess(response.data.menu));
       })

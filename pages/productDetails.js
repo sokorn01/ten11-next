@@ -1,9 +1,8 @@
 import React from "react";
 
 const productDetails = (props) => {
-  console.log(props);
 
-  return <div>This is product de</div>;
+  return <div>This is product details</div>;
 };
 
 // export const getServerSideProps = async (context) => {
